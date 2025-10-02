@@ -4,6 +4,40 @@ The **Relative Strength Quant Model (RSQM) Watchlist Generator** is a Python-bas
 
 ---
 
+## WHAT IS THE RELATIVE STRENGTH QUANT MODEL (RSQM)?
+
+The Relative Strength Quant Model (RSQM) is a systematic approach to stock selection that focuses on identifying equities consistently outperforming a benchmark index (Nifty 50). It leverages quantitative analysis of price momentum across multiple timeframes to rank stocks by their relative strength.
+
+### Key Concepts
+
+- **Relative Strength (RS):**  
+   Measures how much a stock has outperformed or underperformed the benchmark index over a specific period. RS > 1 indicates outperformance.
+
+- **Multi-Period Analysis:**  
+   RSQM evaluates returns over 30, 90, and 180 days to capture both short-term and medium-term momentum.
+
+- **RS Score:**  
+   An aggregate metric combining relative strength values from all periods, providing a holistic view of a stock’s leadership.
+
+- **Ranking & Filtering:**  
+   Stocks are ranked by RS Score, and only the top performers are selected for the watchlist.
+
+### Why Use RSQM?
+
+- **Objective Selection:**  
+   Removes emotion and bias from stock picking by relying on data-driven metrics.
+
+- **Market Leadership:**  
+   Focuses on stocks that are not just rising, but outperforming the broader market.
+
+- **Adaptability:**  
+   Can be applied to different universes (Nifty 50, 100, 200, 500) and timeframes.
+
+- **Ease of Use:**  
+   Automates data collection, calculation, and output generation for efficient workflow.
+
+RSQM is ideal for traders and investors seeking to identify momentum leaders and build watchlists based on proven quantitative methods.
+
 ## FEATURES
 
 - **Automated Data Fetching:** Downloads historical price data for all stocks in the Nifty 100 universe and the Nifty 50 index.
