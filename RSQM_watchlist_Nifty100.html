@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSQM Watchlist - Nifty 100</title>
+<style>
+/* Pure CSS Styling (Ensuring Borders, Stickiness, and Fluidity) */
+html, body { 
+    margin: 0; 
+    padding: 0; 
+    overflow-x: hidden; /* FIX: Prevents page-level horizontal scrollbar */
+}
+body { 
+    font-family: 'Arial', sans-serif; 
+    background-color: #f4f4f9; 
+    padding: 20px; 
+}
+.container { 
+    max-width: 98%; /* Fluid width */
+    margin: 0 auto; 
+    background-color: white; 
+    padding: 15px 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+h2 { color: #2c3e50; border-bottom: 3px solid #f39c12; padding-bottom: 10px; margin-bottom: 20px; font-size: 28px; font-weight: bold; }
+p { color: #7f8c8d; margin-bottom: 25px; font-size: 16px; }
+
+/* Table Styling - Ensuring Borders and Interactivity */
+.styled-table {
+    width: 100%;
+    min-width: 900px; /* Ensures the wide table is visible in the wrapper scroll area */
+    border-collapse: collapse; 
+    font-size: 14px;
+    text-align: center;
+    margin: 0; 
+}
+.styled-table thead th { /* FIX: Make header sticky and prominent */
+    position: sticky !important; /* Force sticky */
+    top: 0 !important; /* Stick to the top of the scrollable container/viewport */
+    z-index: 10; 
+    background-color: #f39c12; /* Accent color for RSQM */
+    color: white;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.2); 
+    cursor: pointer; 
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 1px solid #e67e22 !important; /* Strong border */
+    padding: 12px 15px;
+    white-space: nowrap;
+}
+.styled-table td {
+    padding: 10px 12px;
+    border: 1px solid #dcdcdc !important; /* Clear cell border */
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.styled-table tr:nth-child(even) {
+    background-color: #f7f7fa; 
+}
+.styled-table tr:hover {
+    background-color: #fcf3cf; /* Light yellow hover for RSQM theme */
+}
+
+/* Ticker link styling */
+.ticker-link {
+    font-weight: bold;
+    color: #2980b9;
+    text-decoration: none; 
+}
+.ticker-link:hover {
+    text-decoration: underline;
+}
+
+
+/* Sort Indicators */
+.sort-indicator {
+    margin-left: 5px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+}
+.asc .sort-indicator::after { content: ' ▲'; }
+.desc .sort-indicator::after { content: ' ▼'; }
+.styled-table th.active { background-color: #e67e22; } /* Darker active header */
+
+
+/* Wrapper for table responsiveness and scroll */
+.table-wrapper {
+    overflow-x: auto; /* Allows wide table horizontal scroll */
+    max-height: 80vh; /* Constrain height for better sticky effect */
+    border: 1px solid #c7d5e8;
+    border-radius: 6px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h2 class="header-title">RSQM Watchlist - Nifty 100</h2>
+<p>This report ranks the top 15 stocks in the Nifty 100 index by their **RS Score** (Relative Strength & Quantitative Momentum). The score is an average of the stock's performance relative to the Nifty benchmark over 30, 90, and 180 days. Click on column headers to sort the table. Tickers link to Finology Ticker.</p>
+
+<div class="table-wrapper">
+
+<table id="stockTable" class="styled-table">
+    <thead>
+        <tr><th onclick="sortTable(0)" data-type="string" title="Stock symbol (NSE code)">Ticker<span class="sort-indicator"></span></th><th onclick="sortTable(1)" data-type="numeric" title="Absolute return over last 30 days (%)">AbsRet_30D<span class="sort-indicator"></span></th><th onclick="sortTable(2)" data-type="numeric" title="Relative strength vs Nifty 50 over 30 days">RelStr_30D<span class="sort-indicator"></span></th><th onclick="sortTable(3)" data-type="numeric" title="Absolute return over last 90 days (%)">AbsRet_90D<span class="sort-indicator"></span></th><th onclick="sortTable(4)" data-type="numeric" title="Relative strength vs Nifty 50 over 90 days">RelStr_90D<span class="sort-indicator"></span></th><th onclick="sortTable(5)" data-type="numeric" title="Absolute return over last 180 days (%)">AbsRet_180D<span class="sort-indicator"></span></th><th onclick="sortTable(6)" data-type="numeric" title="Relative strength vs Nifty 50 over 180 days">RelStr_180D<span class="sort-indicator"></span></th><th onclick="sortTable(7)" data-type="numeric" title="Average of all relative strength values (overall outperformance)">RS Score<span class="sort-indicator"></span></th><th onclick="sortTable(8)" data-type="numeric" title="Position in RS Score ranking (1 = strongest)">Rank<span class="sort-indicator"></span></th></tr>
+    </thead>
+    <tbody>
+        <tr style="background-color:#fffceb;"><td><a href="https://ticker.finology.in/company/ETERNAL" target="_blank" rel="noopener noreferrer" class="ticker-link">ETERNAL</a></td><td><span data-order="0.75">0.75%</span></td><td><span data-order="-0.88">-0.88</span></td><td><span data-order="46.36">46.36%</span></td><td><span data-order="1139.34">1139.34</span></td><td><span data-order="44.84">44.84%</span></td><td><span data-order="5.91">5.91</span></td><td><span data-order="381.46">381.46</span></td><td><span data-order="1.00">1.00</span></td></tr><tr ><td><a href="https://ticker.finology.in/company/HYUNDAI" target="_blank" rel="noopener noreferrer" class="ticker-link">HYUNDAI</a></td><td><span data-order="3.87">3.87%</span></td><td><span data-order="-4.53">-4.53</span></td><td><span data-order="38.56">38.56%</span></td><td><span data-order="947.76">947.76</span></td><td><span data-order="47.68">47.68%</span></td><td><span data-order="6.29">6.29</span></td><td><span data-order="316.51">316.51</span></td><td><span data-order="2.00">2.00</span></td></tr><tr ><td><a href="https://ticker.finology.in/company/ADANIPOWER" target="_blank" rel="noopener noreferrer" class="ticker-link">ADANIPOWER</a></td><td><span data-order="27.10">27.10%</span></td><td><span data-order="-31.69">-31.69</span></td><td><span data-order="38.01">38.01%</span></td><td><span data-order="934.05">934.05</span></td><td><span data-order="69.49">69.49%</span></td><td><span data-order="9.17">9.17</span></td><td><span data-order="303.84">303.84</span></td><td><span data-order="3.00">3.00</span></td></tr><tr ><td><a href="https://ticker.finology.in/company/EICHERMOT" target="_blank" rel="noopener noreferrer" class="ticker-link">EICHERMOT</a></td><td><span data-order="18.26">18.26%</span></td><td><span data-order="-21.35">-21.35</span></td><td><span data-order="31.97">31.97%</span></td><td><span data-order="785.72">785.72</span></td><td><span data-order="44.00">44.00%</span></td><td><span data-order="5.80">5.80</span></td><td><span data-order="256.73">256.73</span></td><td><span data-order="4.00">4.00</span></td></tr><tr ><td><a href="https://ticker.finology.in/company/MARUTI" target="_blank" rel="noopener noreferrer" class="ticker-link">MARUTI</a></td><td><span data-order="12.71">12.71%</span></td><td><span data-order="-14.86">-14.86</span></td><td><span data-order="30.52">30.52%</span></td><td><span data-order="750.03">750.03</span></td><td><span data-order="40.92">40.92%</span></td><td><span data-order="5.40">5.40</span></td><td><span data-order="246.85">246.85</span></td><td><span data-order="5.00">5.00</span></td></tr><tr ><td><a href="https://ticker.finology.in/company/TVSMOTOR" target="_blank" rel="noopener noreferrer" class="ticker-link">TVSMOTOR</a></td><td><span data-order="5.72">5.72%</span></td><td><span data-order="-6.68">-6.68</span></td><td><span data-order="21.96">21.96%</span></td><td><span data-order="539.60">539.60</span></td><td><span data-order="57.52">57.52%</span></td><td><span data-order="7.59">7.59</span></td><td><span data-order="180.17">180.17</span></td><td><span data-order="6.00">6.00</span></td></tr><tr ><td><a href="https://ticker.finology.in/company/BOSCHLTD" target="_blank" rel="noopener noreferrer" class="ticker-link">BOSCHLTD</a></td><td><span data-order="-4.47">-4.47%</span></td><td><span data-order="5.23">5.23</span></td><td><span data-order="19.03">19.03%</span></td><td><span data-order="467.76">467.76</span></td><td><span data-order="24.82">24.82%</span></td><td><span data-order="3.27">3.27</span></td><td><span data-order="158.75">158.75</span></td><td><span data-order="7.00">7.00</span></td></tr><tr ><td><a href="https://ticker.finology.in/company/CANBK" target="_blank" rel="noopener noreferrer" class="ticker-link">CANBK</a></td><td><span data-order="10.22">10.22%</span></td><td><span data-order="-11.95">-11.95</span></td><td><span data-order="18.23">18.23%</span></td><td><span data-order="447.97">447.97</span></td><td><span data-order="44.82">44.82%</span></td><td><span data-order="5.91">5.91</span></td><td><span data-order="147.31">147.31</span></td><td><span data-order="8.00">8.00</span></td></tr><tr ><td><a href="https://ticker.finology.in/company/HINDALCO" target="_blank" rel="noopener noreferrer" class="ticker-link">HINDALCO</a></td><td><span data-order="9.29">9.29%</span></td><td><span data-order="-10.86">-10.86</span></td><td><span data-order="17.00">17.00%</span></td><td><span data-order="417.84">417.84</span></td><td><span data-order="36.86">36.86%</span></td><td><span data-order="4.86">4.86</span></td><td><span data-order="137.28">137.28</span></td><td><span data-order="9.00">9.00</span></td></tr><tr ><td><a href="https://ticker.finology.in/company/M&M" target="_blank" rel="noopener noreferrer" class="ticker-link">M&M</a></td><td><span data-order="2.00">2.00%</span></td><td><span data-order="-2.33">-2.33</span></td><td><span data-order="14.85">14.85%</span></td><td><span data-order="364.97">364.97</span></td><td><span data-order="16.39">16.39%</span></td><td><span data-order="2.16">2.16</span></td><td><span data-order="121.60">121.60</span></td><td><span data-order="10.00">10.00</span></td></tr><tr ><td><a href="https://ticker.finology.in/company/PNB" target="_blank" rel="noopener noreferrer" class="ticker-link">PNB</a></td><td><span data-order="5.08">5.08%</span></td><td><span data-order="-5.94">-5.94</span></td><td><span data-order="13.52">13.52%</span></td><td><span data-order="332.23">332.23</span></td><td><span data-order="21.37">21.37%</span></td><td><span data-order="2.82">2.82</span></td><td><span data-order="109.70">109.70</span></td><td><span data-order="11.00">11.00</span></td></tr><tr ><td><a href="https://ticker.finology.in/company/JSWSTEEL" target="_blank" rel="noopener noreferrer" class="ticker-link">JSWSTEEL</a></td><td><span data-order="5.87">5.87%</span></td><td><span data-order="-6.86">-6.86</span></td><td><span data-order="13.37">13.37%</span></td><td><span data-order="328.48">328.48</span></td><td><span data-order="30.04">30.04%</span></td><td><span data-order="3.96">3.96</span></td><td><span data-order="108.53">108.53</span></td><td><span data-order="12.00">12.00</span></td></tr><tr ><td><a href="https://ticker.finology.in/company/TORNTPHARM" target="_blank" rel="noopener noreferrer" class="ticker-link">TORNTPHARM</a></td><td><span data-order="-2.81">-2.81%</span></td><td><span data-order="3.28">3.28</span></td><td><span data-order="12.35">12.35%</span></td><td><span data-order="303.42">303.42</span></td><td><span data-order="11.13">11.13%</span></td><td><span data-order="1.47">1.47</span></td><td><span data-order="102.72">102.72</span></td><td><span data-order="13.00">13.00</span></td></tr><tr ><td><a href="https://ticker.finology.in/company/JINDALSTEL" target="_blank" rel="noopener noreferrer" class="ticker-link">JINDALSTEL</a></td><td><span data-order="4.88">4.88%</span></td><td><span data-order="-5.71">-5.71</span></td><td><span data-order="12.49">12.49%</span></td><td><span data-order="307.01">307.01</span></td><td><span data-order="21.58">21.58%</span></td><td><span data-order="2.85">2.85</span></td><td><span data-order="101.38">101.38</span></td><td><span data-order="14.00">14.00</span></td></tr><tr ><td><a href="https://ticker.finology.in/company/BANKBARODA" target="_blank" rel="noopener noreferrer" class="ticker-link">BANKBARODA</a></td><td><span data-order="6.01">6.01%</span></td><td><span data-order="-7.03">-7.03</span></td><td><span data-order="11.19">11.19%</span></td><td><span data-order="275.13">275.13</span></td><td><span data-order="23.36">23.36%</span></td><td><span data-order="3.08">3.08</span></td><td><span data-order="90.39">90.39</span></td><td><span data-order="15.00">15.00</span></td></tr>
+    </tbody>
+</table>
+
+</div>
+
+</div>
+
+<script>
+let currentSortColumn = -1;
+let sortDirection = "asc";
+
+/**
+ * Retrieves the value used for sorting from a table cell.
+ * Prioritizes the 'data-order' attribute for accurate numeric/percent sorting.
+ * @param {Element} tr - The table row element.
+ * @param {number} idx - The index of the column/cell.
+ * @returns {number|string} The sortable value.
+ */
+function getCellValue(tr, idx) {
+    const cell = tr.children[idx];
+    
+    // Check for <a> tag for Ticker column (index 0)
+    if (idx === 0) {
+        const link = cell.querySelector('a');
+        return link ? link.textContent.trim() : (cell.textContent || cell.innerText).trim();
+    }
+    
+    const span = cell.querySelector('span[data-order]');
+    
+    // 1. Numeric/Percent check (uses data-order)
+    if (span) {
+        const value = parseFloat(span.getAttribute('data-order'));
+        // Use -Infinity for NaN to push missing values to the bottom in ascending order
+        return isNaN(value) ? -Infinity : value;
+    }
+    
+    // 2. Default to text content
+    return (cell.textContent || cell.innerText).trim();
+}
+
+/**
+ * Sorts the HTML table rows based on the clicked column (n).
+ * @param {number} n - The index of the column to sort.
+ */
+function sortTable(n) {
+    const table = document.getElementById("stockTable");
+    const tbody = table.querySelector("tbody");
+    const rows = Array.from(tbody.querySelectorAll("tr"));
+    const header = table.querySelector("thead tr").children[n];
+    const dataType = header.getAttribute('data-type');
+    
+    // Determine the sorting direction
+    if (currentSortColumn === n) {
+        sortDirection = sortDirection === "asc" ? "desc" : "asc";
+    } else {
+        // Reset direction and active class for new column
+        // Default to descending for numbers, ascending for strings (Ticker)
+        sortDirection = (dataType === 'numeric') ? 'desc' : 'asc'; 
+        
+        // Remove active class and indicator from old column
+        if (currentSortColumn !== -1) {
+            const oldHeader = table.querySelector("thead tr").children[currentSortColumn];
+            oldHeader.classList.remove("asc", "desc", "active");
+        }
+        currentSortColumn = n;
+    }
+
+    // Add active class and indicator to the current column
+    header.classList.remove("asc", "desc");
+    header.classList.add(sortDirection, "active");
+
+
+    const sortedRows = rows.sort((rowA, rowB) => {
+        let valA = getCellValue(rowA, n);
+        let valB = getCellValue(rowB, n);
+        let comparison = 0;
+
+        // Perform comparison based on data type
+        if (dataType === 'numeric') {
+            // Direct numeric comparison
+            if (valA < valB) comparison = -1;
+            if (valA > valB) comparison = 1;
+        } 
+        else {
+            // Standard string comparison (case-insensitive for 'Ticker')
+            const strA = String(valA).toLowerCase();
+            const strB = String(valB).toLowerCase();
+            if (strA < strB) comparison = -1;
+            if (strA > strB) comparison = 1;
+        }
+        
+        // Apply direction multiplier
+        return sortDirection === "asc" ? comparison : comparison * -1;
+    });
+
+    // Reappend the sorted rows to the tbody
+    tbody.innerHTML = ''; // Clear existing content
+    sortedRows.forEach(row => tbody.appendChild(row));
+    
+}
+
+// Initial sort on 'RS Score' column (Index 2) descending.
+// Ticker(0), Rank(1), RS Score(2)
+document.addEventListener('DOMContentLoaded', () => {
+    // Automatically trigger initial sort on 'RS Score' (index 2) descending
+    sortTable(2); 
+});
+</script>
+
+</body>
+</html>
